@@ -1,53 +1,64 @@
-<<<<<<< HEAD
-# SIT323-2025-prac6p
-=======
-# SIT323 - Practical 6.1P: Kubernetes Deployment
+# SIT323-2025-Prac6C
 
-# Summary
-This repo demonstrates deploying a Node.js microservice to a Kubernetes cluster.
+## Overview
+This repository contains the deliverables for the SIT323 Cloud Application Development Practical Task 6.2C. The task involves deploying a containerised application to a Kubernetes cluster.
 
-# Features
+## Files
+- `Dockerfile`: Contains instructions to build the application image.
+- `deployment.yaml`: Kubernetes deployment configuration for the application.
+- `service.yaml`: Kubernetes service configuration to expose the application.
+- `README.md`: Documentation for the task, including setup instructions.
 
-- Containerised Node.js web application  
-- Docker image pushed to Docker Hub  
-- Kubernetes Deployment to manage pods  
-- Kubernetes Service to expose the app  
-- Can be run on Docker Desktop Kubernetes 
+## Setup Instructions
 
-# Docker Image
-Docker Hub: [s222472494/6.1p](https://hub.docker.com/r/s222472494/6.1p)
- 
-# Step-by-Step Setup Instructions
+1. **Clone the repository:**
 
-### Step 1: Clone the Repository
+   ```bash
+   git clone https://github.com/username/sit323-2025-prac6c.git
+   cd sit323-2025-prac6c
+   ```
 
-Start by cloning this repository to your local machine:
+2. **Build the Docker image:**
 
-git clone https://github.com/s222472494/sit323-2025-prac6p.git
-cd sit323-2025-prac6p
+   Navigate to the directory containing your `Dockerfile` and build the image:
 
+   ```bash
+   docker build -t your-image-name .
+   ```
 
-### Step 2: Build the Docker Image
+3. **Push the Docker image to Docker Hub (optional):**
 
-docker login
+   If required, push the image to a container registry (e.g., Docker Hub):
 
-docker build -t s222472494/6.1p:latest .
+   ```bash
+   docker tag your-image-name username/repository-name:tag
+   docker push username/repository-name:tag
+   ```
 
-docker push s222472494/6.1p:latest
+4. **Deploy to Kubernetes:**
 
-kubectl cluster-info
+   Make sure your Kubernetes cluster is running. Apply the deployment and service configurations:
 
-kubectl apply -f deployment.yaml
+   ```bash
+   kubectl apply -f deployment.yaml
+   kubectl apply -f service.yaml
+   ```
 
-kubectl apply -f service.yaml
+5. **Access the Application:**
 
-kubectl get pods
+   Use port-forwarding to access the application locally:
 
-kubectl get services
+   ```bash
+   kubectl port-forward svc/your-service-name 8080:80
+   ```
 
-http://localhost:3000
+   Then, navigate to `http://localhost:8080` to access your application.
 
+## Troubleshooting
 
+- Ensure your Kubernetes cluster is running and configured properly.
+- Make sure you have the correct permissions to deploy and expose services in the cluster.
 
+## Conclusion
 
->>>>>>> 0c31197 (Initial commit with Dockerfile, Kubernetes configurations, and app)
+This task demonstrates the use of Docker and Kubernetes for deploying a cloud-based application. All deliverables and configurations are provided in this repository.

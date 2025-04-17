@@ -14,6 +14,6 @@ spec:
     spec:
       containers:
         - name: node-container
-          image: s222472494/6.1p:latest
+          image: s222472494/sit323_6.1p:latest
           ports:
             - containerPort: 3000
